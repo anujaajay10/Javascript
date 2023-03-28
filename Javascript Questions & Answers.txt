@@ -1,0 +1,424 @@
+1) Find the prime numbers in the given list using javascript.
+
+-->
+const numbers = [2, 4, 7, 9, 11, 13, 17, 19, 20, 23];
+const primes = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  let isPrime = true;
+  for (let j = 2; j < numbers[i]; j++) {
+    if (numbers[i] % j === 0) {
+      isPrime = false;
+      break;
+    }
+  }
+  if (isPrime && numbers[i] !== 1) {
+    primes.push(numbers[i]);
+  }
+}
+
+
+2) Write a anagram program using javascript.
+
+-->
+
+function checkStringsAnagram(a, b) {
+   let len1 = a.length;
+   let len2 = b.length;
+   if(len1 !== len2){
+      console.log('Invalid Input');
+      return
+   }
+   let str1 = a.split('').sort().join('');
+   let str2 = b.split('').sort().join('');
+   if(str1 === str2){
+      console.log("True");
+   } else { 
+      console.log("False");
+   }
+   
+   
+
+
+3) Find the fibonacci series using javascript.
+
+-->
+
+// program to generate fibonacci series up to n terms
+
+// take input from the user
+const number = parseInt(prompt('Enter the number of terms: '));
+let n1 = 0, n2 = 1, nextTerm;
+
+console.log('Fibonacci Series:');
+
+for (let i = 1; i <= number; i++) {
+    console.log(n1);
+    nextTerm = n1 + n2;
+    n1 = n2;
+    n2 = nextTerm;
+}
+
+-->
+
+const n = 10; 
+let a = 0, b = 1,c;
+console.log(a);
+console.log(b);
+for (let i = 2; i < n; i++) {
+    console.log(a);
+    const c = a + b;
+  a = b;
+  b = c;
+}b     
+
+
+4) Using inheritence concepts in javascript,create a person basic information in the parent class.Child class should be a student,employee and father.
+
+-->
+
+class Person {
+  constructor(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+
+  introduce() {
+    console.log(`Hi, my name is ${this.name}, I am ${this.age} years old, and I identify as ${this.gender}.`);
+  }
+}
+
+class Student extends Person {
+  constructor(name, age, gender, grade) {
+    super(name, age, gender);
+    this.grade = grade;
+  }
+
+  study() {
+    console.log(`${this.name} is studying hard to get good grades.`);
+  }
+}
+
+class Employee extends Person {
+  constructor(name, age, gender, jobTitle) {
+    super(name, age, gender);
+    this.jobTitle = jobTitle;
+  }
+
+  work() {
+    console.log(`${this.name} is working hard as a ${this.jobTitle}.`);
+  }
+}
+
+class Father extends Person {
+  constructor(name, age, gender, children) {
+    super(name, age, gender);
+    this.children = children;
+  }
+
+  parent() {
+    console.log(`${this.name} is the proud father of ${this.children}.`);
+  }
+}
+
+5) Write a javascript program to convert roman numbers to numbers.
+
+-->
+function romanToNumber(roman) {
+  const numeralMap = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+  };
+  
+  let result = 0;
+  
+  for (let i = 0; i < roman.length; i++) {
+    const currentNumeral = numeralMap[roman[i]];
+    const nextNumeral = numeralMap[roman[i+1]];
+    
+    if (nextNumeral && currentNumeral < nextNumeral) {
+      result -= currentNumeral;
+    } else {
+      result += currentNumeral;
+    }
+  }
+  
+  return result;
+}
+
+// example usage
+console.log(romanToNumber('X')); // output: 7
+console.log(romanToNumber('XIX')); // output: 19
+console.log(romanToNumber('MCMLXXIV')); // output: 1974
+
+6) Write a javascript program to find the sum of the pair of numbers in a list is equal to the target number
+
+--> function findSumPairs(arr, target) {
+  let pairs = [];
+
+  // Loop through each element in the array
+  for (let i = 0; i < arr.length; i++) {
+    // Loop through each element after the current element
+    for (let j = i + 1; j < arr.length; j++) {
+      // Check if the sum of the two elements is equal to the target
+      if (arr[i] + arr[j] === target) {
+        pairs.push([arr[i], arr[j]]);
+      }
+    }
+  }
+
+  // Return the array of pairs
+  return pairs;
+}
+
+// Example usage
+const numbers = [1, 2, 3, 4, 5, 6];
+const target = 7;
+
+const pairs = findSumPairs(numbers, target);
+console.log(pairs); // Output: [[1, 6], [2, 5], [3, 4]]
+
+-->
+function findSumPairs(arr, target) {
+  let pairs = [];
+  for(let i=0; i<arr.length; i++) {
+   for(let j=i+1; j<arr.length; j++) {
+      if(arr[i] + arr[j] === target) {
+        pairs.push([arr[i], arr[j]]);
+      }
+    }
+  }
+  
+  return pairs;
+}
+const numbersInput = prompt('Enter the numbers: ');
+const numbers = numbersInput.split(",").map(Number);
+const target = Number(prompt('Enter the target: '));
+const pairs = findSumPairs(numbers, target);
+console.log(`Pairs: `,pairs);
+
+7) Write a javascript to reverse a string and give proper exceptions if the user is giving other languages.
+
+-->
+function reverseString(string) {
+    if (!/^[a-zA-Z0-9\s]+$/.test(string)) {
+        return "This function only supports English language";
+    }
+    else{
+       return string.split("").reverse().join(""); 
+    }
+  
+}
+let n= prompt("Enter string: ");
+let x=reverseString(n);
+console.log(x);
+  
+8) Use some proper validations of the user data to your application using HTML,CSS,Javascript.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Data Validation</title>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Data Validation</h1>
+    <form id="user-form">
+      <div>
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" required>
+        <span id="full-name-error" class="error"></span>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="email-error" class="error"></span>
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <span id="age-error" class="error"></span>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <span id="password-error" class="error"></span>
+      </div>
+      <div>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <span id="confirm-password-error" class="error"></span>
+      </div>
+      <div>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+    <script>
+      const form = document.getElementById('user-form');
+      const fullNameInput = document.getElementById('full-name');
+      const emailInput = document.getElementById('email');
+      const ageInput = document.getElementById('age');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirm-password');
+
+      function validateFullName() {
+        const fullName = fullNameInput.value.trim();
+        const fullNameError = document.getElementById('full-name-error');
+        if (fullName === '') {
+          fullNameError.textContent = 'Full name is required';
+          return false;
+        } else if (!/^[A-Za-z ]+$/.test(fullName)) {
+          fullNameError.textContent = 'Full name must only contain letters and spaces';
+          return false;
+        }
+        fullNameError.textContent = '';
+        return true;
+      }
+
+      function validateEmail() {
+        const email = emailInput.value.trim();
+        const emailError = document.getElementById('email-error');
+        if (email === '') {
+          emailError.textContent = 'Email is required';
+          return false;
+        } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+          emailError.textContent = 'Invalid email format';
+          return false;
+        }
+        emailError.textContent = '';
+        return true;
+      }
+
+      function validateAge() {
+        const age = ageInput.value.trim();
+        const ageError = document.getElementById('age-error');
+        if (age === '') {
+          ageError.textContent = 'Age is required';
+          return false;
+        } else if (isNaN(age)) {
+          ageError.textContent = 'Age must be a number';
+          return false;
+        } else if (age < 18) {
+          ageError.textContent = 'Age must be at least 18';
+          return false;
+        }
+        ageError.textContent = '';
+        return true;
+      }
+
+      function validatePassword() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        const passwordError = document
+        }
+
+-->
+
+form--->html
+---------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="b1">
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" minlength="6" required>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+      
+</body>
+</html>
+
+
+
+form.css
+------------------------------------
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .b1{
+    font-size: medium;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  
+  
+  form.js
+  ------------------------------
+  
+const form = document.getElementById("myForm");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  
+  if (!isValidName(name)) {
+    alert("Invalid name. Name must contain only letters and spaces.");
+    return;
+  }
+  
+  if (!isValidEmail(email)) {
+    alert("Invalid email.");
+    return;
+  }
+  
+  if (!isValidPassword(password)) {
+    alert("Invalid password. Password must be at least 6 characters long.");
+    return;
+  }
+  
+  // if all data is valid, submit the form
+  form.submit();
+});
+
+function isValidName(name) {
+  const regex = /^[a-zA-Z\s]+$/;
+  return regex.test(name);
+}
+
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+function isValidPassword(password) {
+  return password.length >= 6;
+}
+
